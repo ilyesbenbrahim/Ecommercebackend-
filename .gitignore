@@ -1,0 +1,23 @@
+# Dependency directories
+node_modules/
+
+# Environment configuration files
+.env
+
+# Log files
+logs/
+*.log
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional nodemon logs
+nodemon.json
+
+# Optional editor directories and files
+.idea/
+*.sublime-workspace
+.vscode/
