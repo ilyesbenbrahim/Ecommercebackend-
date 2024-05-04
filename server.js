@@ -1,16 +1,23 @@
-const express = require("express");
-const mongoose = require("mongoose");
-require("dotenv").config();
-// const productroutes = require("./routes/products");
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const authRoutes = require('./routes/auth');
+
 const app = express();
-// const cors = require("cors");
-// app.use(cors());
-app.use(express.json());
-// app.use("/product", productroutes);
-app.listen(process.env.PORT, () => {
-  console.log("server is runnig");
-});
-mongoose
-  .connect(process.env.URL)
-  .then(() => console.log("connected with database"))
-  .catch(() => console.log("connection failed"));
+
+// Enable CORS for all requests
+app.use(cors());
+app.options('*', cors()); // Enable pre-flight across-the-board
+
+app.use(express.json()); // Middleware to parse JSON
+
+// Use routes
+app.use('/api/auth', authRoutes);
+
+mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log(err));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
