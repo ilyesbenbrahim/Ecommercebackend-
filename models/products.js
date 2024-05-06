@@ -16,9 +16,9 @@ const productShema = new mongoose.Schema({
     type: Number,
     unique: true,
   },
-  tailles: {
-    type: String,
-    enum: ["XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL"],
-  },
-});
-module.exports = mongoose.model("product", productShema);
+}
+);
+const Product = mongoose.model('Product', productShema);
+module.exports = Product;
+
+
