@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const productsRoutes = require('./routes/products');
+const upload = require('./middlewares/imageUpload');
 
 const app = express();
 
@@ -19,6 +20,17 @@ app.use('/api/auth', authRoutes);
 app.use('/uploads', express.static('uploads'));
 // Routes pour les produits
 app.use('/api/products', productsRoutes);
+
+
+app.post('/upload', upload.single('image'), (req, res) => {
+  const fileUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+  res.status(200).json({
+      message: 'File uploaded successfully',
+      filename: req.file.filename,
+      url: fileUrl
+    });
+  });
+
 
 // Connexion à MongoDB
 mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: true })
