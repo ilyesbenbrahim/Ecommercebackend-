@@ -16,6 +16,7 @@ app.use(express.json()); // Middleware pour parser le JSON
 // Routes pour l'authentification
 app.use('/api/auth', authRoutes);
 
+app.use('/uploads', express.static('uploads'));
 // Routes pour les produits
 app.use('/api/products', productsRoutes);
 
