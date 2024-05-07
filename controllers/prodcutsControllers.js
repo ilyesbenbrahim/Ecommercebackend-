@@ -1,6 +1,7 @@
 const Product = require("./../models/products");
 // Créer un nouveau produit
 exports.createProduct = async (req, res) => {
+  console.log(req.body)
   try {
     const { title, image, quantitedisponible, prixduproduit } = req.body;
     const product = new Product({
