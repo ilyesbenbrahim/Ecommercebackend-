@@ -22,7 +22,7 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api/products', productsRoutes);
 
 
-app.post('/upload', upload.single('image'), (req, res) => {
+app.post( (req, res) => {
   const fileUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
   res.status(200).json({
       message: 'File uploaded successfully',

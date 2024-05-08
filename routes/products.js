@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const productController = require("../controllers/prodcutsControllers");
+const upload = require("../middlewares/imageUpload");
 // Créer un nouveau produit
-router.post("/", productController.createProduct);
+router.post("/", upload.single('image') ,productController.createProduct);
 
 // Obtenir tous les produits
 router.get("/", productController.getAllProducts);
