@@ -7,7 +7,7 @@ router.post("/", upload.single('image') ,productController.createProduct);
 
 // Obtenir tous les produits
 router.get("/", productController.getAllProducts);
-
+                  
 // Obtenir un produit par son ID
 router.get("/:id", productController.getProduct);
 
