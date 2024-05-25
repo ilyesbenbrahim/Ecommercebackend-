@@ -12,10 +12,15 @@ const productShema = new mongoose.Schema({
   },
   prixduproduit: {
     type: Number,
-
   },
-}
-);
+  description: {
+    type: String,
+  },
+  nbrProductSelled: {
+    type: Number,
+    default: 0,
+  },
+});
 const Product = mongoose.model('Product', productShema);
 module.exports = Product;
 
