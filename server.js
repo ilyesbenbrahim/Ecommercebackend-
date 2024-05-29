@@ -21,7 +21,7 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api/products', productsRoutes);
 
 // Connexion à MongoDB
-mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: true, serverSelectionTimeoutMS: 50000 })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log('Error connecting to MongoDB:', err));
 
